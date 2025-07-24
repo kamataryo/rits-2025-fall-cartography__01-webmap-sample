@@ -13,7 +13,11 @@ const map = new maplibregl.Map({
       sources: {
         'gsi-pale': {
           type: 'raster',
-          tiles: ['https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png'],
+          // [カスタマイズ]
+          // 以下のサイトを確認して、地図の種類を変えてみよう
+          // std -> pale, english, ...
+          // https://maps.gsi.go.jp/development/ichiran.html
+          tiles: ['https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png'],
           tileSize: 256,
           attribution: '<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank">地理院タイル</a>',
         }
@@ -27,11 +31,16 @@ const map = new maplibregl.Map({
 
     // center: 地図の初期表示位置を経度・緯度で指定
     // [経度, 緯度] の順番で指定します（注意：緯度・経度ではありません）
+    // 【カスタマイズ】日本の色々な場所を中心にしてみよう
     center: [139.6917, 35.6895], // 東京駅付近
 
     // zoom: 地図の初期ズームレベルを指定
     // 数値が大きいほど拡大表示されます
+    // 【カスタマイズ】数字を変えてズームを調整してみよう
     zoom: 1,
+
+    // 【カスタマイズ】 false -> true にすると？
+    hash: false,
 });
 
 // 地図がクリックされたときの処理
